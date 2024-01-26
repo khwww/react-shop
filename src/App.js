@@ -5,6 +5,7 @@ import './App.css';
 import data from './data.js';
 import Detail from './routes/Detail.js';
 import About from './routes/About.js';
+import Event from './routes/Event.js';
 import { useState } from "react";
 //라우터 라이브러리 사용을 위한 import
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
@@ -31,7 +32,8 @@ function App(){
             <Nav.Link onClick={()=>{ navigate('/') }}>Home</Nav.Link>
             <Nav.Link onClick={()=>{ navigate('./detail') }} >Detail</Nav.Link>
             <Nav.Link onClick={()=>{ navigate('./about') }}>About</Nav.Link>
-            <Nav.Link href="#cart">old-shoes</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('./event') }}>Event</Nav.Link>
+
           </Nav>
         </Navbar.Collapse>    
         <Form inline className="mx-auto">
@@ -66,6 +68,11 @@ function App(){
         <Route path="/about" element={<About/>}>
           <Route path="member" element={<div>멤버임</div>}/>
           <Route path="location" element={<div>위치임</div>}/>
+        </Route>
+
+        <Route path="/event" element={<Event/>}>
+          <Route path="one" element={<p>첫 주문시 양배추즙 서비스</p>}/>
+          <Route path="two" element={<p>생일기념 쿠폰받기</p>}/>
         </Route>
 
       </Routes>
