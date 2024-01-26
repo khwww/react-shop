@@ -3,12 +3,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaSearch } from 'react-icons/fa';
 import './App.css';
 import data from './data.js';
+import Detail from './routes/Detail.js';
+import About from './routes/About.js';
 import { useState } from "react";
 //라우터 라이브러리 사용을 위한 import
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 
 function App(){
   let [bag] = useState(data);
+  let navigate = useNavigate();
+  // 이런식으로 useNavigate안에 들어가 있는 함수를 변수에 넣어서 사용 - 인주로 준 경로로 페이지를 이동시켜주는 함수
+  // 인자에 1넣으면 한 페이지 앞으로 가고, -2넣으면 두 페이지 이전으로 가줌 - 윈도우 뒤로가기, 앞으로가기 버튼과 same
   return ( 
     <div className="App">
 
@@ -21,13 +26,12 @@ function App(){
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
             {/* 페이지 이동 버튼은 link태그-import해와야됨 */}
-            <Link to="/">홈</Link>
-            <Link to="/detail">상세페이지</Link>
-            <Nav.Link href="#home">Porter</Nav.Link>
-            <Nav.Link href="#products">Polo</Nav.Link>
-            <Nav.Link href="#categories">Sweat</Nav.Link>
+            {/* <Link to="/">홈</Link>
+            <Link to="/detail">상세페이지</Link> */}
+            <Nav.Link onClick={()=>{ navigate('/') }}>Home</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('./detail') }} >Detail</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('./about') }}>About</Nav.Link>
             <Nav.Link href="#cart">old-shoes</Nav.Link>
-            
           </Nav>
         </Navbar.Collapse>    
         <Form inline className="mx-auto">
@@ -55,8 +59,17 @@ function App(){
           </div>
         </div>
       </div>} />
-        <Route path="/detail" element={<div>상세페이지임</div>} />
+        <Route path="/detail" element={<Detail/>} />
+        
+        <Route path ="*" element={<div>없는페이지야! 바보..(aka. 404 page)</div>}></Route>
+
+        <Route path="/about" element={<About/>}>
+          <Route path="member" element={<div>멤버임</div>}/>
+          <Route path="location" element={<div>위치임</div>}/>
+        </Route>
+
       </Routes>
+      
       
 
     </div>
