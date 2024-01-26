@@ -7,6 +7,7 @@ import Detail from './routes/Detail.js';
 import About from './routes/About.js';
 import Event from './routes/Event.js';
 import { useState } from "react";
+import { useEffect } from 'react';
 //라우터 라이브러리 사용을 위한 import
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 
@@ -15,9 +16,23 @@ function App(){
   let navigate = useNavigate();
   // 이런식으로 useNavigate안에 들어가 있는 함수를 변수에 넣어서 사용 - 인주로 준 경로로 페이지를 이동시켜주는 함수
   // 인자에 1넣으면 한 페이지 앞으로 가고, -2넣으면 두 페이지 이전으로 가줌 - 윈도우 뒤로가기, 앞으로가기 버튼과 same
+
+  let [alert, setAlert] = useState(true)
+  useEffect(()=>{
+    let a = setTimeout(()=>{setAlert(false)}, 5000)
+    return ()=>{
+      clearTimeout(a)
+    }
+  }, [])
+
   return ( 
     <div className="App">
-
+      {
+        alert == true ? <div className='alert alert-warning'>
+        Welcome to Samgak Store!
+        </div>
+        : null  
+      }
 
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container className="justify-content-between">
@@ -61,7 +76,7 @@ function App(){
           </div>
         </div>
       </div>} />
-        <Route path="/detail" element={<Detail/>} />
+        <Route path="/detail" element={<Detail bag={bag}/>} />
         
         <Route path ="*" element={<div>없는페이지야! 바보..(aka. 404 page)</div>}></Route>
 
@@ -74,6 +89,8 @@ function App(){
           <Route path="one" element={<p>첫 주문시 양배추즙 서비스</p>}/>
           <Route path="two" element={<p>생일기념 쿠폰받기</p>}/>
         </Route>
+
+        <Route path="/detail/:id" element={ <Detail bag={bag}/> }/>
 
       </Routes>
       
