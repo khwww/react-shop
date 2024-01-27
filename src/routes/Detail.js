@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { Nav } from 'react-bootstrap'
 
 // 이거 styeld component
 // let YelloBtn = styled.button`
@@ -35,7 +36,7 @@ function Detail(props) {
 
     <div className="row">
       <div className="col-md-6">
-        <img src={require('../img/bag' + id + '.jpg')} width="200%" />
+        <img src={require('../img/bag' + id + '.jpg')} width="100%" />
       </div>
       <div className="col-md-6">
         <h4 className="pt-5">{ 찾은상품.title }</h4>
@@ -44,6 +45,26 @@ function Detail(props) {
         <button className="btn btn-danger">주문하기</button> 
       </div>
     </div>
+
+    {/* defaultActiveKey는 페이지에 들어갔을 때 기본적으로 선택되어 있을 탭을 의미 */}
+    <Nav variant="tabs" defaultActiveKey="link0">
+      <Nav.Item>
+        <Nav.Link eventKey="link0">버튼0</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link eventKey="link1">버튼1</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link eventKey="link2">버튼2</Nav.Link>
+      </Nav.Item>
+    </Nav>
+    <div>내용0</div>
+    <div>내용1</div>
+    <div>내용2</div>
+
+
+
+
   </div> 
   )
 
