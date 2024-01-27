@@ -74,8 +74,32 @@ function Detail(props) {
 }
 
 function TapContent(props) {
+      // 이렇게 해도됨 이러면 탭에 들어간 값의 번째에 있는 값을
+    // 왼쪽의 array에서 꺼내줌 
+    // return(<div>
+    //   { [<div>내용0</div>, <div>내용2</div>, <div>내용2</div>][props.탭] }
+    // </div>)
+
+    
+    let [fade, setFade] = useState('')
+
+    // useEffect안에 있는 return은 클린업평션임
+    // useEffect실행하기 전에 실행하고 싶은 코드 적으면
+    // 먼저 실행됨.
+    // 아래에서 timeout 쓴 이유는 시간차를 두어서 
+    // automatic batching을 피하려고 하는거임.
+    useEffect(()=>{
+      let a = setTimeout(()=>{ setFade('end') }, 100)
+      return ()=>{
+        clearTimeout(a)
+        setFade('')
+      }
+    }, [props.탭])
+    // 안에 있는 코드는 탭이 변경될 때마다 실행됨
+
   if(props.탭 == 0){
-    return <div>
+                  // `start ${fade}` 백틱사용해서 이렇게도 가능
+    return <div className={'start ' + fade}>
       포터(PORTER)는 1935년 가방 장인인 요시다 기치조가 설립한 요시다 컴퍼니에서 1962년 발표한 자체 브랜드로<br/>
 “바늘 한 땀 한 땀에 영혼을 담는다”라는 ‘일침입혼(一針入魂)’의 장인 정신을 바탕으로 하고 있습니다.<br/>
 현대적인 디자인에 뛰어난 기술력과 기능성, 사용하면 할수록 감탄을 더하게 하는 내구성과 실용성을 모두 겸비한 가방 브랜드로 잘 알려져 있습니다.<br/>
@@ -94,10 +118,10 @@ function TapContent(props) {
     </div>
   }
   else if(props.탭 == 1){
-    return <div>이 가방 실물이 더 이뻐요. 저는 거짓말을 하지 않습니다. i'm so sorry but i love you.</div>
+    return <div className={'start ' + fade}>이 가방 실물이 더 이뻐요. 저는 거짓말을 하지 않습니다.<br/>i'm so sorry but i love you.</div>
   }
   else if(props.탭 == 2){
-    return <div>이 가방 팔아도 남는 게 없습니다. 진짜에요. 저 그냥 자선사업가라고 보시면 됩니다. i'm so sorry but i love you.</div>
+    return <div className={'start ' + fade}>이 가방 팔아도 남는 게 없습니다. 진짜에요. 저 그냥 자선사업가라고 보시면 됩니다.<br/>i'm so sorry but i love you.</div>
   }
 }
 
