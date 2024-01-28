@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { Nav } from 'react-bootstrap'
 import { func } from 'prop-types';
+import { addItem } from './../store';
+import { useDispatch } from 'react-redux';
 
 // 이거 styeld component
 // let YelloBtn = styled.button`
@@ -22,6 +24,8 @@ function Detail(props) {
   });
 
   let[탭, 탭변경] = useState(0)
+
+  let dispatch = useDispatch()
 
 
   if(!id) {
@@ -48,7 +52,9 @@ function Detail(props) {
         <h4 className="pt-5">{ 찾은상품.title }</h4>
         <p>{ 찾은상품.content }</p>
         <p>{ 찾은상품.price}원</p>
-        <button className="btn btn-danger">주문하기</button> 
+        <button className="btn btn-danger" onClick={()=>{
+          dispatch(addItem({id : 찾은상품.id, name : 찾은상품.title, count : 1}))
+        }}>주문하기</button> 
       </div>
     </div>
 
