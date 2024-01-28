@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useEffect } from 'react';
 //라우터 라이브러리 사용을 위한 import
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
+import Cart from './routes/Cart.js'
 
 function App(){
   let [bag] = useState(data);
@@ -91,6 +92,8 @@ function App(){
         </Route>
 
         <Route path="/detail/:id" element={ <Detail bag={bag}/> }/>
+
+        <Route path='/cart'element={<Cart/>}/>
 
       </Routes>
       
