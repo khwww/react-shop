@@ -22,6 +22,7 @@ function App(){
       localStorage.setItem('watched', JSON.stringify([]));
     }
   }, []);
+  let get_local = JSON.parse(localStorage.getItem('watched'));
 
   let [bag] = useState(data);
   let navigate = useNavigate();
@@ -68,6 +69,18 @@ function App(){
         </Form>
       </Container>
       </Navbar>
+
+      {/*최근 본 상품 구현 부*/}
+      <div className="cart-box">
+        <p>최근 본 상품</p>
+        {get_local !== null ? (
+          get_local.map((item, index) => (
+            <p key={index} className="get-local">{item}</p>
+          ))
+        ) : null}
+      </div>
+      {/*최근 본 상품 구현 부*/}
+
 
       
 

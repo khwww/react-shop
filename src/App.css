@@ -51,3 +51,30 @@
     transform: rotate(360deg);
   }
 }
+
+/* 최근 본 상품 기능 */
+.cart-box {
+  position: fixed;
+  top: 50%; /* 조정 가능한 값 */
+  right: 0;
+  transform: translateY(-50%);
+  background-color: #ffb618;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-box p {
+  margin: 0;
+}
+
+.cart-box p:first-child {
+  font-size: 28px; /* p태그의 '최근 본 상품'의 폰트 사이즈 */
+}
+
+.get-local {
+  margin-top: 10px;
+  font-size: 24px;
+}
+/* 최근 본 상품 기능 */
+
