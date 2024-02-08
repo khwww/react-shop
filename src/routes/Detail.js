@@ -27,6 +27,17 @@ function Detail(props) {
 
   let dispatch = useDispatch()
 
+  useEffect(()=>{
+    let 꺼낸거 = localStorage.getItem('watched')
+    꺼낸거 = JSON.parse(꺼낸거)
+    꺼낸거.push(찾은상품.id)
+  
+    //Set으로 바꿨다가 다시 array로 만들기
+    꺼낸거 = new Set(꺼낸거)
+    꺼낸거 = Array.from(꺼낸거)
+    localStorage.setItem('watched', JSON.stringify(꺼낸거))
+  }, [])
+
 
   if(!id) {
     return <div>기본 디테일 페이지 입니다?</div>

@@ -13,6 +13,16 @@ import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import Cart from './routes/Cart.js'
 
 function App(){
+
+  useEffect(() => {
+    // 이미 'watched' 항목이 있는지 확인, 이러면 새로고침해도 값 남아있음.
+    const watchedItems = localStorage.getItem('watched');
+    if (!watchedItems) {
+      // watchedItems가 존재하지 않으면 새로운 watched 아이템을 생성
+      localStorage.setItem('watched', JSON.stringify([]));
+    }
+  }, []);
+
   let [bag] = useState(data);
   let navigate = useNavigate();
   // 이런식으로 useNavigate안에 들어가 있는 함수를 변수에 넣어서 사용 - 인주로 준 경로로 페이지를 이동시켜주는 함수

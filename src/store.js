@@ -13,6 +13,7 @@ let cart = createSlice({
       let 번호 = state.findIndex((a)=>{ return a.id === action.payload})
       state[번호].count++
     },
+
     addItem(state, action){
       state.push(action.payload)
 

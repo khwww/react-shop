@@ -12,9 +12,7 @@ let data = [ //대괄호니까 array
     title : "porter tanker bag[olive]",
     content : "Born in Seoul",
     price : 110000
-  },
-
-  {
+  },{
     id : 2,
     title : "porter half bag[olive]",
     content : "Born in the States",
@@ -258,7 +256,6 @@ let data = [ //대괄호니까 array
     content : "Born in the States",
     price : 130000
   }
-
 ] 
 
 export default data;
