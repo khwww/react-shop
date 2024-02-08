@@ -56,7 +56,7 @@
 .cart-box {
   position: fixed;
   top: 50%; /* 조정 가능한 값 */
-  right: 0;
+  right: 20px;
   transform: translateY(-50%);
   background-color: #ffb618;
   padding: 40px;
@@ -69,7 +69,7 @@
 }
 
 .cart-box p:first-child {
-  font-size: 28px; /* p태그의 '최근 본 상품'의 폰트 사이즈 */
+  font-size: 23px; /* p태그의 '최근 본 상품'의 폰트 사이즈 */
 }
 
 .get-local {
