@@ -19,6 +19,8 @@ function Detail(props) {
 
   // 유저가 URL파라미터에 입력한거를 가져와주는 useParams라는 훅이 있음
   let {id} = useParams();
+
+  
   let 찾은상품 = props.bag.find(function(x){
     return x.id == id
   });
@@ -26,6 +28,8 @@ function Detail(props) {
   let[탭, 탭변경] = useState(0)
 
   let dispatch = useDispatch()
+
+  
 
   useEffect(()=>{
     let 꺼낸거 = localStorage.getItem('watched')
@@ -38,10 +42,10 @@ function Detail(props) {
     localStorage.setItem('watched', JSON.stringify(꺼낸거))
   }, [])
 
-
-  if(!id) {
-    return <div>기본 디테일 페이지 입니다?</div>
+  if(!id) { 
+    return <div>기본 디테일 페이지 입니다?</div>;
   }
+
 
   if(!찾은상품) {
     return <div>상품을 찾을 수 없습니다.</div>

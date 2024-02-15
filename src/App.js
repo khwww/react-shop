@@ -3,14 +3,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaSearch } from 'react-icons/fa';
 import './App.css';
 import data from './data.js';
-import Detail from './routes/Detail.js';
 import About from './routes/About.js';
 import Event from './routes/Event.js';
 import { useState } from "react";
 import { useEffect } from 'react';
+import { lazy, Suspense } from 'react';
 //라우터 라이브러리 사용을 위한 import
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
-import Cart from './routes/Cart.js'
+
+// import Detail from './routes/Detail.js';
+// import Cart from './routes/Cart.js'
+
+const Detail = lazy(()=> import('./routes/Detail.js'));
+const Cart = lazy(()=> import('./routes/Cart.js'));
 
 function App(){
 
@@ -83,7 +88,7 @@ function App(){
 
 
       
-
+      <Suspense fallback={<div>로딩중임</div>}>
       {/* Route하나가 페이지 하나임 */}
       <Routes>
       <Route path="/" element={<div>
@@ -115,11 +120,15 @@ function App(){
           <Route path="two" element={<p>생일기념 쿠폰받기</p>}/>
         </Route>
 
-        <Route path="/detail/:id" element={ <Detail bag={bag}/> }/>
+        <Route path="/detail/:id" element={ 
+            <Detail bag={bag}/>
+        }/>    
 
         <Route path='/cart'element={<Cart/>}/>
 
       </Routes>
+
+      </Suspense>
       
       
 
