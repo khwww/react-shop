@@ -46,7 +46,8 @@ function App(){
     <div className="App">
       {
         alert == true ? <div className='alert alert-warning'>
-        Welcome to Samgak Store!
+        Welcome to Samgak Store!<br/> 
+        All products sold in our store are used.
         </div>
         : null  
       }
@@ -106,6 +107,7 @@ function App(){
           </div>
         </div>
       </div>} />
+      
         <Route path="/detail" element={<Detail bag={bag}/>} />
         
         <Route path ="*" element={<div>없는페이지야! 바보..(aka. 404 page)</div>}></Route>
