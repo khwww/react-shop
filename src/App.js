@@ -2,7 +2,7 @@ import {Button, Navbar, Container, Nav, Form, FormControl} from 'react-bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaSearch } from 'react-icons/fa';
 import './App.css';
-import data from './data.js';
+import data from './data/data.js';
 import About from './routes/About.js';
 import Event from './routes/Event.js';
 import Bag from './routes/Bag.js';
@@ -67,6 +67,8 @@ function App(){
             {/* <Nav.Link onClick={()=>{ navigate('./detail') }} >Detail</Nav.Link> */}
             <Nav.Link onClick={()=>{ navigate('./bag') }}>Bag</Nav.Link>
             <Nav.Link onClick={()=>{ navigate('./wallet') }}>Wallet</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('./Sweat') }}>Sweat</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('./Acc') }}>Acc</Nav.Link>
             <Nav.Link onClick={()=>{ navigate('./about') }}>About Us</Nav.Link>
             <Nav.Link onClick={()=>{ navigate('./event') }}>Event</Nav.Link>
             <Nav.Link onClick={()=>{ navigate('./cart') }}>Cart</Nav.Link>
@@ -95,7 +97,10 @@ function App(){
       {/* Route하나가 페이지 하나임 */}
       <Routes>
       <Route path="/"
-      element={<div className="main-bg"></div>}
+      element={
+      <div className="main-bg">
+        <p className='main-font'>Samgak△</p>
+      </div>}
       />
         <Route path="/bag" element={<Bag/>} />
       

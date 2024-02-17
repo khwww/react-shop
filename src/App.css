@@ -23,10 +23,20 @@
 
 /* 메인 홈 페이지 배너사진 */
 .main-bg {
-  height: 900px;
+  height: 700px;
+  width: 100%;
   background-image: url('./img/mainbg.jpg');
   background-size: cover;
   background-position: center;
+}
+
+/*메인 대문 문구*/
+.main-font {
+  font-size: 160px; /* 폰트 크기 */
+  font-weight: bold; /* 폰트 굵기 */
+  color: #010101; /* 폰트 색상 */
+  letter-spacing: 15px; /* 글자 간격 */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 폰트 패밀리 */
 }
 
 /* 가방 판매 페이지 배너사진 */
@@ -64,10 +74,10 @@
 /* 최근 본 상품 기능 */
 .cart-box {
   position: fixed;
-  top: 50%; /* 조정 가능한 값 */
+  top: 40%; /* 조정 가능한 값 */
   right: 20px;
   transform: translateY(-50%);
-  background-color: #ffb618;
+  background-color: rgba(203, 191, 186, 0.8); /* 기존 색상에 반투명 효과 */
   padding: 40px;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -75,10 +85,12 @@
 
 .cart-box p {
   margin: 0;
+  color: #333; /* 글자 색상 */
+  font-weight: bold; /* 폰트 굵기 */
 }
 
 .cart-box p:first-child {
-  font-size: 23px; /* p태그의 '최근 본 상품'의 폰트 사이즈 */
+  font-size: 20px; /* p태그의 '최근 본 상품'의 폰트 사이즈 */
 }
 
 .get-local {
@@ -90,6 +102,7 @@
 
 /* footer */
 #footer {
+  
   background-color: #f8f9fa;
   padding: 20px;
   text-align: center;
