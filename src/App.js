@@ -5,6 +5,7 @@ import './App.css';
 import data from './data.js';
 import About from './routes/About.js';
 import Event from './routes/Event.js';
+import Bag from './routes/Bag.js';
 import { useState } from "react";
 import { useEffect } from 'react';
 import { lazy, Suspense } from 'react';
@@ -54,7 +55,7 @@ function App(){
 
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container className="justify-content-between">
-        <Navbar.Brand href="#home">Samgak Store</Navbar.Brand>
+        <Navbar.Brand onClick={()=>{ navigate('/') }} href="#home">Samgak Store</Navbar.Brand>
     
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -62,9 +63,11 @@ function App(){
             {/* 페이지 이동 버튼은 link태그-import해와야됨 */}
             {/* <Link to="/">홈</Link>
             <Link to="/detail">상세페이지</Link> */}
-            <Nav.Link onClick={()=>{ navigate('/') }}>Home</Nav.Link>
-            <Nav.Link onClick={()=>{ navigate('./detail') }} >Detail</Nav.Link>
-            <Nav.Link onClick={()=>{ navigate('./about') }}>About</Nav.Link>
+            {/* <Nav.Link onClick={()=>{ navigate('/') }}>Home</Nav.Link> */}
+            {/* <Nav.Link onClick={()=>{ navigate('./detail') }} >Detail</Nav.Link> */}
+            <Nav.Link onClick={()=>{ navigate('./bag') }}>Bag</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('./wallet') }}>Wallet</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('./about') }}>About Us</Nav.Link>
             <Nav.Link onClick={()=>{ navigate('./event') }}>Event</Nav.Link>
             <Nav.Link onClick={()=>{ navigate('./cart') }}>Cart</Nav.Link>
 
@@ -87,26 +90,14 @@ function App(){
       </div>
       {/*최근 본 상품 구현 부*/}
 
-
       
       <Suspense fallback={<div>로딩중임</div>}>
       {/* Route하나가 페이지 하나임 */}
       <Routes>
-      <Route path="/" element={<div>
-        <div className="main-bg"></div>
-        <div className="container">
-          <div className="row">
-            {/* <Card bag={bag[1]} i={2}></Card> */}
-            {
-              bag.map((a, i)=>{
-                return (
-                  <Card key={i} bag={bag[i]} i={i}></Card>
-                )
-              })
-            }
-          </div>
-        </div>
-      </div>} />
+      <Route path="/"
+      element={<div className="main-bg"></div>}
+      />
+        <Route path="/bag" element={<Bag/>} />
       
         <Route path="/detail" element={<Detail bag={bag}/>} />
         
@@ -132,24 +123,16 @@ function App(){
 
       </Suspense>
       
+      <footer className='footer' role="contentinfo"> 
+        <div className="company-info">
+          <span>Company Name: 삼각(samgak) | Owner: 김현우 | Personal Info Manager: 김피티 | Email:<a href='mailto:woowoo982@naver.com' rel="noopener noreferrer"> samgak@naver.com</a><br/>Address: Kyungpook National Univ., Sangyeok 3(sam)-dong, Buk-gu, Daegu, Republic of Korea | Business Registration Number: 111-22-33333 | Business License: 2024-대구북구-1234호 | Hosting by xxxx</span>
+        </div>
+      </footer>
       
 
     </div>
   );
 }
-function Card(props){
-  let navigate = useNavigate();
-  let handleClick = () => {
-    // 이미지 클릭 시 해당 상품의 디테일 페이지로 이동
-    navigate(`/detail/${props.i}`);
-  };
-  return (
-    <div className='col-md-4'>
-      <img onClick={handleClick} src={require('./img/bag' + (props.i) + '.jpg')} width="80%" />
-      <h4 onClick={handleClick}>{ props.bag.title }</h4>
-      <p onClick={handleClick}>{ props.bag.price }</p>
-    </div>
-  )
-}
+
 
 export default App;

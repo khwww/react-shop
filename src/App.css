@@ -21,7 +21,16 @@
   transition: opacity 1s;
 }
 
+/* 메인 홈 페이지 배너사진 */
 .main-bg {
+  height: 900px;
+  background-image: url('./img/mainbg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* 가방 판매 페이지 배너사진 */
+.bag-bg {
   height: 300px;
   background-image: url('./img/samgak.jpg');
   /* background-size: cover; */
@@ -79,8 +88,22 @@
 /* 최근 본 상품 기능 */
 
 
-/* 상품 이미지 */
+/* footer */
+#footer {
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+}
 
+.company-info {
+  margin-top: 10px;
+}
+
+.company-info span {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #555;
+}
 
 /**/
-
