@@ -6,6 +6,7 @@ import data from './data/data.js';
 import About from './routes/About.js';
 import Event from './routes/Event.js';
 import Bag from './routes/Bag.js';
+import Mainsilde from './routes/Mainsilde.js';
 import { useState } from "react";
 import { useEffect } from 'react';
 import { lazy, Suspense } from 'react';
@@ -98,8 +99,8 @@ function App(){
       <Routes>
       <Route path="/"
       element={
-      <div className="main-bg">
-        <p className='main-font'>Samgak△</p>
+      <div>
+        <Mainsilde/>
       </div>}
       />
         <Route path="/bag" element={<Bag/>} />
@@ -130,6 +131,7 @@ function App(){
       
       <footer className='footer' role="contentinfo"> 
         <div className="company-info">
+          <br/>
           <span>Company Name: 삼각(samgak) | Owner: 김현우 | Personal Info Manager: 김피티 | Email:<a href='mailto:woowoo982@naver.com' rel="noopener noreferrer"> samgak@naver.com</a><br/>Address: Kyungpook National Univ., Sangyeok 3(sam)-dong, Buk-gu, Daegu, Republic of Korea | Business Registration Number: 111-22-33333 | Business License: 2024-대구북구-1234호 | Hosting by xxxx</span>
         </div>
       </footer>
