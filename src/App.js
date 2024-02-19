@@ -1,4 +1,4 @@
-import {Button, Navbar, Container, Nav, Form, FormControl} from 'react-bootstrap'
+import {Button, Navbar, Container, Nav, Form, FormControl, Modal} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaSearch } from 'react-icons/fa';
 import './App.css';
@@ -44,6 +44,10 @@ function App(){
     }
   }, [])
 
+  /*모달창*/
+  const [show, setShow] = useState(true);
+  const handleClose = () => setShow(false);
+
   return ( 
     <div className="App">
       {
@@ -70,7 +74,7 @@ function App(){
             <Nav.Link onClick={()=>{ navigate('./wallet') }}>Wallet</Nav.Link>
             <Nav.Link onClick={()=>{ navigate('./Sweat') }}>Sweat</Nav.Link>
             <Nav.Link onClick={()=>{ navigate('./Acc') }}>Acc</Nav.Link>
-            <Nav.Link onClick={()=>{ navigate('./about') }}>About Us</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('./about') }}>About</Nav.Link>
             <Nav.Link onClick={()=>{ navigate('./event') }}>Event</Nav.Link>
             <Nav.Link onClick={()=>{ navigate('./cart') }}>Cart</Nav.Link>
 
@@ -128,6 +132,33 @@ function App(){
       </Routes>
 
       </Suspense>
+
+      
+
+      {/* 모달창 */}
+      <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>NOTICE</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p>안녕하세요. 방문해주셔서 감사합니다.<br/>현재 사이트가 개발중입니다.<br/>사이트를 통한 상품구매가
+        불가능합니다.</p>
+      </Modal.Body>
+      <Modal.Footer>
+        
+        <Button variant="secondary" onClick={handleClose}>
+          오늘 하루 안 보지 않기
+        </Button>
+        <Button variant="warning" onClick={handleClose}>
+          확인
+        </Button>
+      </Modal.Footer>
+    </Modal>
+
+
+
+
+
       
       <footer className='footer' role="contentinfo"> 
         <div className="company-info">
