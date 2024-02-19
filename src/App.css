@@ -104,7 +104,8 @@
 
 /* footer */
 #footer {
-  
+  width: 100%;
+  bottom: 0;
   background-color: #f8f9fa;
   padding: 20px;
   text-align: center;
@@ -116,9 +117,11 @@
 
 .company-info span {
   display: block;
+  position: fixed;
   margin-bottom: 5px;
   font-size: 14px;
   color: #555;
+  position: relative;
 }
 
 /*슬라이드 이미지*/
@@ -126,6 +129,7 @@
 .slick-slide img {
   width: 27%; /* 이미지의 가로 너비를 컨테이너에 맞게 조정합니다. */
   height: 875px; /* 세로 비율을 자동으로 조정하여 원래의 이미지 비율을 유지합니다. */
-  margin: 0 auto; /* 가운데 정렬을 위한 마진 설정 */
+  
+  margin: 13px auto 0 auto; /* 가운데 정렬을 위한 마진 설정 */
   display: block; /* 가운데 정렬을 위해 이미지를 블록 요소로 설정 */
 }
