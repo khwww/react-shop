@@ -1,6 +1,6 @@
 import {Table} from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
-import { addCount } from './../store.js'
+import { addCount, minCount } from './../store.js'
 
 
 // tr넣으면 행 하나 생기고 th넣으면 열 하나 생김
@@ -34,6 +34,10 @@ let dispatch = useDispatch()
                   <button onClick={()=>{
                     dispatch(addCount(state.cart[i].id))
                   }}>+</button>
+                  <button onClick={()=>{
+                    dispatch(minCount(state.cart[i].id))
+                  }}>-</button>
+                  <button>삭제</button>
                 </td>
               </tr>
             )
