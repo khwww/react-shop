@@ -15,7 +15,10 @@ let cart = createSlice({
     },
     minCount(state, action){
       let 번호 = state.findIndex((a)=>{ return a.id === action.payload})
-      state[번호].count--;
+      if (state[번호].count > 1) state[번호].count--;
+    },
+    deleteCount(state, action) {
+      action.payload.remove();
     },
 
     addItem(state, action){
@@ -24,7 +27,7 @@ let cart = createSlice({
     }
   } 
 })
-export let { addCount, minCount, addItem } = cart.actions
+export let { addCount, minCount, deleteCount, addItem } = cart.actions
 
 
 export default configureStore({

@@ -1,7 +1,7 @@
 import {Table} from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
-import { addCount, minCount } from './../store.js'
-
+import { addCount, minCount, deleteCount } from './../store.js'
+import '../App.css';
 
 // tr넣으면 행 하나 생기고 th넣으면 열 하나 생김
 function Cart(){
@@ -13,8 +13,8 @@ let state = useSelector((state)=> state )
 let dispatch = useDispatch()
 
   return (
-    <div>
-      <Table>
+    <div className='cart-container'>
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>#</th>
@@ -30,15 +30,15 @@ let dispatch = useDispatch()
                 <td>{state.cart[i].id}</td>
                 <td>{state.cart[i].name}</td>
                 <td>{state.cart[i].count}</td>
-                <td>
-                  <button onClick={()=>{
-                    dispatch(addCount(state.cart[i].id))
-                  }}>+</button>
-                  <button onClick={()=>{
-                    dispatch(minCount(state.cart[i].id))
-                  }}>-</button>
-                  <button>삭제</button>
-                </td>
+                <button onClick={()=>{
+                  dispatch(addCount(state.cart[i].id))
+                }}> + </button>
+                <button onClick={()=>{
+                  dispatch(minCount(state.cart[i].id))
+                }}> - </button>
+                <button onClick={(e)=>{
+                  dispatch(deleteCount(e.target.parentElement))
+                }}> 삭제 </button>
               </tr>
             )
           }

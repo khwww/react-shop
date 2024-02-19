@@ -155,3 +155,36 @@
   color: rgb(249, 177, 9); /* 호버 시 텍스트 색상을 파란색으로 변경 */
   cursor: pointer; /* 호버 시 커서 모양을 포인터로 변경 */
 }
+
+
+
+
+
+
+
+
+/*장바구니*/
+.cart-container {
+  margin-top: 0px;
+}
+
+tr:nth-child(even) {
+  background-color: #ffffff; /* 짝수 행의 배경색 */
+}
+
+tr:nth-child(odd) {
+  background-color: #f2f2f2; /* 홀수 행의 배경색 */
+}
+
+td,
+button {
+  padding: 8px; /* 셀과 버튼의 안쪽 여백 설정 */
+}
+
+button {
+  margin-right: 5px; /* 버튼 간격 설정 */
+}
+
+button:hover {
+  cursor: pointer; /* 호버 시 포인터로 변경 */
+}
